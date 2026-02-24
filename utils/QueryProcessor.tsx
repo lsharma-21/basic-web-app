@@ -14,9 +14,21 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("andrew")) {
     return "lsharma";
   }
-  if (query.toLowerCase().includes("minus")) {
-    return "-4";
+
+  const q = query.toLowerCase();
+  
+  // Match numbers connected by "plus"
+  const matches = q.match(/\d+/g);
+
+  if (matches && q.includes("plus")) {
+    const sum = matches
+      .map(Number)
+      .reduce((a, b) => a + b, 0);
+
+    return sum.toString();
   }
+
+
 
   return "";
 }
