@@ -15,8 +15,8 @@ export default function QueryProcessor(query: string): string {
     return "lsharma";
   }
 
-  const q = query.toLowerCase();
-  
+  let q = query.toLowerCase();
+
   // Match numbers connected by "plus"
   const matches = q.match(/\d+/g);
 
@@ -28,6 +28,20 @@ export default function QueryProcessor(query: string): string {
     return sum.toString();
   }
 
+// Convert words to math operators
+  q = q
+    .replace(/what is/g, "")
+    .replace(/plus/g, "+")
+    .replace(/multiplied by/g, "*")
+    .replace(/[^0-9+*().]/g, "");
+
+  // Safely evaluate
+  try {
+    const result = Function(`"use strict"; return (${q})`)();
+    return result.toString();
+  } catch {
+    return "Unable to calculate";
+  }
 
 
   return "";
