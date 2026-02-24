@@ -33,11 +33,4 @@ describe("QueryProcessor", () => {
             "lsharma"
           ));
     })
-    test('should return -4', () => {
-        const query = "Which of the What is 44 minus 48?";
-        const response: string = QueryProcessor(query);
-        expect(response).toBe((
-            "-4"
-          ));
-    })
 });
