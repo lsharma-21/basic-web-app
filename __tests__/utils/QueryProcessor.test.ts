@@ -33,4 +33,11 @@ describe("QueryProcessor", () => {
             "lsharma"
           ));
     })
+    test('should return 99', () => {
+        const query = "Which of the following numbers are primes: 99, 47, 36, 19, 86?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe((
+            "99"
+          ));
+    })
 });
