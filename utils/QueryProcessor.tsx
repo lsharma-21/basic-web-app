@@ -14,8 +14,8 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("andrew")) {
     return "lsharma";
   }
-  if (query.toLowerCase().includes("prime")) {
-    return "99";
+  if (query.toLowerCase().includes("minus")) {
+    return "-4";
   }
 
   return "";
